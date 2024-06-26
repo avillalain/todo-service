@@ -1,0 +1,12 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: none
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    username: ${JDBC_USERNAME}
+    password: ${JDBC_PASSWORD}
+    url: ${JDBC_URL}
+    name:
+  application:
+    name: todo-service

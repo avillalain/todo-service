@@ -1,0 +1,130 @@
+{
+  "consumer": {
+    "name": "todo-web"
+  },
+  "interactions": [
+    {
+      "description": "a request for a new todo",
+      "pending": false,
+      "providerStates": [
+        {
+          "name": "I am adding a new todo"
+        }
+      ],
+      "request": {
+        "body": {
+          "content": {
+            "description": "Buy more minis"
+          },
+          "contentType": "application/json",
+          "encoded": false
+        },
+        "headers": {
+          "Content-Type": [
+            "application/json"
+          ]
+        },
+        "method": "POST",
+        "path": "/todos"
+      },
+      "response": {
+        "body": {
+          "content": {
+            "description": "Buy more minis",
+            "id": 1
+          },
+          "contentType": "application/json",
+          "encoded": false
+        },
+        "headers": {
+          "Content-Type": [
+            "application/json"
+          ]
+        },
+        "matchingRules": {
+          "body": {
+            "$": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            }
+          },
+          "header": {},
+          "status": {}
+        },
+        "status": 200
+      },
+      "type": "Synchronous/HTTP"
+    },
+    {
+      "description": "a request for all todos",
+      "pending": false,
+      "providerStates": [
+        {
+          "name": "I have a list of Todos"
+        }
+      ],
+      "request": {
+        "headers": {
+          "Accept": [
+            "application/json"
+          ]
+        },
+        "method": "GET",
+        "path": "/todos"
+      },
+      "response": {
+        "body": {
+          "content": [
+            {
+              "description": "Buy more minis",
+              "id": 1
+            }
+          ],
+          "contentType": "application/json",
+          "encoded": false
+        },
+        "headers": {
+          "Content-Type": [
+            "application/json"
+          ]
+        },
+        "matchingRules": {
+          "body": {
+            "$": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "type",
+                  "min": 1
+                }
+              ]
+            }
+          },
+          "header": {},
+          "status": {}
+        },
+        "status": 200
+      },
+      "type": "Synchronous/HTTP"
+    }
+  ],
+  "metadata": {
+    "pact-js": {
+      "version": "13.0.0"
+    },
+    "pactRust": {
+      "ffi": "0.4.21",
+      "models": "1.2.2"
+    },
+    "pactSpecification": {
+      "version": "4.0"
+    }
+  },
+  "provider": {
+    "name": "todo-service"
+  }
+}
